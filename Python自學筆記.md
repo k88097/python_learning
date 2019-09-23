@@ -152,10 +152,11 @@ Python的基本資料型態有下列幾種：
 * 集合：set、frozenset。
 ### 1. type() 函數
 可以利用此函數得知該變數的資料型態
-    '''Python
+
+ ```Python
     x = 10
     print(type(x))
     
     ---output---
     <class 'int'>
-    '''
+ ```
