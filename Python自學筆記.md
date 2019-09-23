@@ -1,4 +1,5 @@
-# Python自學筆記
+ # Python自學筆記
+ 
 
 ## 第一章 認識變數與基本數學運算
 
@@ -12,32 +13,32 @@
 
 ### 3. 四則運算
 四則運算是指加( + )、減( - )、乘( * )、除( / )
-```Python
+```python=
 x, y = 1, 2
 ```
 * 加法 ( + )
-```Python
+```python=
 ans = x + y
 
 ---output---
 3
 ```
 * 減法 ( - )
-```Python
+```python=
 ans = x - y
 
 ---output---
 -1
 ```
 * 乘法 ( * )
-```Python
+```python=
 ans = x * y
 
 ---output---
 2
 ```
 * 除法 ( / )
-```Python
+```python=
 ans = x / y
 
 ---output---
@@ -45,21 +46,21 @@ ans = x / y
 ```
 ### 4. 其他的特殊運算
 * 求餘數 ( % )
-```Python
+```python=
 ans = x % y
 
 ---output---
 1
 ```
 * 求整數 ( // )
-```Python
+```python=
 ans = x // y
 
 ---output---
 0
 ```
 * 次方 ( ** )
-```Python
+```python=
 ans = x ** y
 
 ---output---
@@ -86,7 +87,7 @@ ans = x ** y
 
 ### 7. 等號的多重指定使用
 使用Python時，可以一次設定多個變數等於某一個數值。
-```Python
+```python=
 x = y = z = 10
 
 x, y, z = 10, 20, 30
@@ -94,7 +95,7 @@ x, y, z = 10, 20, 30
 
 ### 8. 刪除變數
 變數刪除後，將無法再次使用，需要重新定義才可使用。
-```Python
+```python=
 del 變數名稱
 
 del x
@@ -102,11 +103,11 @@ del x
 
 ### 9. Python的斷行
 Python允許一行多個敘述，但是彼此要用";"隔開，儘管有提供此功能，也不鼓勵使用此方式撰寫程式碼。
-```Python
+```python=
 x = 10;print(y)
 ```
 另外也有將一個敘述拆成多行的寫法。
-```Python
+```python=
 a = b = c = 10
 
 #續行方法1
@@ -124,7 +125,7 @@ print(y)
 ### 10. 小試身手
 1. 銀行存款複利的計算，假設目前銀行年利率是1.5%，複利公式如下：
 
-    ```Python
+    ```python=
     #n是年
     本金和 = 本金 * (1 + 年利率) ** n
     ```
@@ -134,7 +135,7 @@ print(y)
     
 2. 假設圓半徑是5公分，圓面積與圓周長計算公式分別如下：
 
-    ```Python
+    ```python=
     #Pi = 3.14159, r是半徑
     圓面積 = Pi * r * r
     圓周長 = 2 * Pi *r
@@ -153,10 +154,68 @@ Python的基本資料型態有下列幾種：
 ### 1. type() 函數
 可以利用此函數得知該變數的資料型態
 
- ```Python
-    x = 10
-    print(type(x))
+```python=
+x = 10
+print(type(x))
     
-    ---output---
-    <class 'int'>
- ```
+---output---
+<class 'int'>
+```
+
+### 2. 整數與浮點數的運算
+Python具有簡單的自動轉換能力，在計算時會將整束轉換為浮點數再計算。
+
+```python=
+x = 10  
+print(x)  
+print(type(x))    #辨別x的型態
+x += 5.5  
+print(x)  
+print(type(x))    #再次辨別x的型態
+
+---output---
+10
+<class 'int'>
+15.5
+<class 'float'>
+```
+### 3. 位元數的轉換
+* 2進位與bin()
+可以利用bin()函數將一般數字轉成2進位。
+
+```python=
+x = 0b1101  #2進位整數
+print(x)  
+y = 13      #10進位整數
+print(bin(y))
+
+---output---
+13
+0b1101
+```
+
+* 8進位與oct()
+可以利用oct()函數將一般數字轉成8進位。
+```python=
+x = 0o57        #8進位整數
+print(x)  
+y = 47          #10進位整數
+print(oct(y))    #轉換為8進位
+
+---output---
+47
+0o57
+```
+
+* 16進位與hex()
+可以利用hex()函數將一般數字轉成16進位。
+```python=
+x = 0x5D  
+print(x)  
+y = 93  
+print(hex(y))
+
+---output---
+93
+0x5d
+```
