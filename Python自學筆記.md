@@ -1076,7 +1076,7 @@ None
     
     $$BMI=\dfrac{體重_{(Kg)}}{身高^2_{(m)}}$$
     
-    Ans：[解答]()
+    Ans：[解答](https://github.com/k88097/python_learning/blob/master/ch4/ch4_1.py)
     
 2. **猜出生日期**
 
@@ -1084,13 +1084,13 @@ None
     
     提示：一個月份最多有31天，5個問題，每次回答是跟否。$2^5=32$
     
-    Ans：[解答]()
+    Ans：[解答](https://github.com/k88097/python_learning/blob/master/ch4/ch4_2.py)
     
 3. **12生肖系統**
 
     請輸入你出生的西元年，程式會輸出相對應的生肖。
     
-    Ans：[解答]()
+    Ans：[解答](https://github.com/k88097/python_learning/blob/master/ch4/ch4_3.py)
     
 4. **求一元二次方程式的根**
 
@@ -1102,6 +1102,6 @@ None
     
     $$r=\dfrac{-b±\sqrt{b^2-4ac}}{2a}$$
     
-    Ans:[解答]()
+    Ans:[解答](https://github.com/k88097/python_learning/blob/master/ch4/ch4_4.py)
     
 ---
