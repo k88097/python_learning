@@ -149,6 +149,8 @@ print(y)
     ```
     Ans:[解答](https://github.com/k88097/python_learning/blob/master/ch1/ch1_2.py)
     
+---
+    
 ## 第二章 Python的基本資料型態
 Python的基本資料型態有下列幾種：
 * 數值：整數( int )、浮點數( float )、~~複數~~( complex number 不常用)。
@@ -535,7 +537,6 @@ string = b'\\xe8\\xb6\\x99\\xe5\\x93\\x81\\xe6\\xb7\\xb5'
 stringUcode = string.decode('utf-8')  
 print(stringUcode)
 
-
 ---output---
 
 趙品淵
@@ -554,3 +555,335 @@ print(stringUcode)
     2. 兩點求一直線公式： $\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$
     
     Ans:[解答](https://github.com/k88097/python_learning/blob/master/ch2/ch2_2.py)
+
+---
+
+## 第三章 基本輸入與輸出
+
+### 1. Python的輔助說明 help()
+
+**help()** 函數可以列出某一個Python的指定或函數的使用說明。
+
+```python=
+help(print)
+
+---output---
+
+Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+    
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+```
+
+### 2. 格式化輸出資料使用 print()
+
+print()的基本語法如下：
+
+```python=
+print(value, ..., sep=' ', end="\n", file=sys.stdout, flush=False)
+```
+
+* **value**：想要輸出的值。
+* **sep**：當輸出多筆資料時，可以插入各筆資料的分格字元，預設是一個空白字元。
+* **end**：資料輸出結束時在最後插入的字元，預設是插入換行字元。如果不要讓輸出換行，只要輸入**end=""** 即可。
+* **file**：資料輸出的位置，預設的**sys.stdout**意思是螢幕上輸出。
+* **flush**：是否清除資料流的緩衝區，預設是不清除。
+
+```python=
+str1 = "111"  
+str2 = "222"  
+print(str1, str2)  
+print(str1, str2, end="\t")     #結尾以Tab功能輸出而不是預設的換行\n  
+print(str1, str2, sep=" ... ")
+
+---output---
+
+111 222
+111 222	111 ... 222
+```
+
+### 3. 格式化 print() 輸出
+
+格式化的基本格式如下：*(如果變數只有一個，%的後面可以不用括號)*
+
+```python=
+print("...輸出格式..." % (變數, 變數, ...))
+```
+
+輸出格式有下列幾種格式：
+* **%d**：整數輸出。
+* **%f**：浮點數輸出。
+* **%x**：16進位整數輸出。
+* **%X**：16進位大寫整數輸出。
+* **%o**：8進位整數輸出。
+* **%s**：字串輸出。
+* **%e**：科學記號e的輸出。
+* **%E**：科學記號E的輸出。
+
+```python=
+name = "品淵"  
+score_python = 97  
+score_java = 90  
+avg = (score_python + score_java) / 2  
+print("%s的成績如下：" % name)  
+print("Python：%d\nJava：%d\n平均分數：%f" % (score_python, score_java, avg))
+
+---output---
+
+品淵的成績如下：
+Python：97
+Java：90
+平均分數：93.5
+```
+
+### 4. 精準控制格式化輸出
+為了使輸出能夠更加精準，會加上下列參數，使得輸出更加精準。
+
+```
+m：保留多少格數供輸出。
+n：小數資料保留格數。
++：輸出資料是正值時，會在最左邊加上"+"符號。
+-：保留格數空間有多時，資料靠左輸出。
+```
+
+* **%(+|-)nd**：整數輸出。
+* **%(+|-)m.nf**：浮點數輸出。
+* **%(+|-)nx**：16進位輸出。
+* **%(+|-)no**：8進位輸出。
+* **%(-)ns**：字串輸出。
+* **%(-)m.ns**：m是字串寬度，n是顯示字串長度，n小於字串長度時會有裁減字串的效果。
+* **%(+|-)e**：科學記號e的輸出。
+* **%(+|-)E**：科學記號E的輸出。
+
+```python=
+x, y, s = 100, 10.5, "Python"  
+print("x=/%6d/" % x)  
+print("y=/%6.2f/" % y)  
+print("s=/%8s/" % s)  
+print("保留格數空間不足時")  
+print("x=/%2d/" % x)  
+print("y=/%3.2f/" % y)  
+print("s=/%5s/" % s)
+
+---output---
+
+x=/   100/
+y=/ 10.50/
+s=/  Python/
+保留格數空間不足時
+x=/100/
+y=/10.50/
+s=/Python/
+```
+
+其中，**%m.ns**字串輸出最為特殊：
+
+```python=
+s = "abcdefghij"  
+print("/%10.4s/" % s)
+
+---output---
+
+/      abcd/
+```
+
+### 5. format() 函數
+
+Python加強版的格式化輸出，基本格式如下：
+
+```python=
+print("...輸出格式區...".format(變數,...))
+```
+
+在輸出格式區，皆以"{}"來表示。
+
+```python=
+score_python = 97  
+score_java = 90  
+avg = (score\_python + score\_java) / 2  
+print("Python：{}\\nJava：{}\\n平均分數：{}".format(score_python, score_java, avg))
+
+---output---
+
+Python：97
+Java：90
+平均分數：93.5
+```
+
+也可以用編號來表示順序或是變數，範例如下：
+
+```python=
+score_python = 97  
+score_java = 90  
+avg = (score\_python + score\_java) / 2  
+print("Python：{0}\\nJava：{1}\\n平均分數：{2}".format(score_python, score_java, avg))  
+print("===============")  
+print("Python：{p}\\nJava：{j}\\n平均分數：{a}".format(p=97, j=90, a=(97 \+ 90) / 2))
+
+---output---
+
+Python：97
+Java：90
+平均分數：93.5
+===============
+Python：97
+Java：90
+平均分數：93.5
+```
+
+在**format()** 中也可以使用精準的輸出，傳統的是使用"."來區隔，它則是使用":"，也可以選擇對齊方式。
+```
+>：靠右對齊
+<：靠左對齊
+^：置中對齊
+```
+
+```python=
+r = 5  
+PI = 3.14159  
+area = PI * r ** 2  
+print("/半徑{0:3d}圓面積是{1:10.2f}/".format(r,area))  
+print("/半徑{0:>3d}圓面積是{1:>10.2f}/".format(r,area))  
+print("/半徑{0:<3d}圓面積是{1:<10.2f}/".format(r,area))  
+print("/半徑{0:^3d}圓面積是{1:^10.2f}/".format(r,area))
+
+---output---
+
+/半徑  5圓面積是     78.54/
+/半徑  5圓面積是     78.54/
+/半徑5  圓面積是78.54     /
+/半徑 5 圓面積是  78.54   /
+```
+
+### 6. 輸出資料到檔案 open()函數
+
+因為預設是將資料輸出至螢幕，可以利用此特性將資料輸出到指定檔案。
+
+```python=
+file_Obj = open(file, mode="r")
+```
+
+* **file**：用字串列出欲開啟的檔案，如不只名路徑則開啟目前工作資料夾。
+* **mode**：開啟檔案模式，如果省略不寫預設以r模式。也同時具有多項模式，例如："wb"代表以二進位檔案開啟供寫入資料。
+    * "r"：**預設**，開啟檔案供讀取。
+    * "w"：開啟檔案供寫入，覆蓋原有內容。
+    * "a"：開啟檔案供寫入，將新資料接在原資料後面。
+    * "x"：開啟新的檔案供寫入，如果開啟已存在的檔案會產生錯誤。
+    
+    **下列是第二個字母意義，代表檔案類型。**
+    * "b"：開啟二進位檔案模式。
+    * "t"：**預設**，開啟文字檔案模式。
+* **file_Obj**：檔案物件名稱，可自行命名。
+
+另外，不使用時，一定要關閉 **"file_Obj.close()"** ，才可返回作業系統的檔案管理員觀察執行結果。
+
+接著只要在**print()**的參數**file**中指定檔案名稱即可
+
+```python=
+print("Python is easy.", file=file_Obj)
+file_Obj.colse()
+```
+
+### 7. 資料輸入 input()
+
+input()與print()剛好相反，input()會從螢幕讀取輸入資料，但是輸入的資料回傳到程式中一定都是**字串型態**，如果要使用數學運算一定要先用int()轉成數字型態。使用格式如下：
+
+```python=
+value = input("prompt:")
+```
+
+```python=
+name = input("請輸入姓名：")  
+engh = int(input("請輸入英文成績："))  
+math = int(input("請輸入數學成績："))  
+total = engh + math  
+print("%s 你的總分是 %d" % (name, total))
+
+---output---
+
+請輸入姓名：品淵
+請輸入英文成績：93
+請輸入數學成績：100
+品淵 你的總分是 193
+```
+
+### 8. 處理字串的數學運算 eval()
+
+Python中有一個非常好用的計算數學表達式的函數 **eval()**，可以直接傳回字串內數學表達式的計算結果。
+
+```python=
+number = eval(input("請輸入數學公式："))  
+print("結果：%0.2f" % number)
+
+---output---
+
+請輸入數學公式：43/6+10
+結果：17.17
+```
+
+### 9. 列出所有內建函數 dir()
+
+可以列出指定函數中所有的函式。
+
+```python=
+print(dir(str))     #列出str()中所有函式
+
+---output---
+
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+```
+
+### 10. 小試身手
+
+1. **溫度轉換**
+
+    請輸入華氏溫度(°F)，這個程式會輸出華氏溫度(℃)。
+    
+    轉換公式如下：
+
+    $$攝氏溫度 = (華氏溫度 - 32) × 5 ÷ 9$$
+        
+    Ans：[解答](https://)
+
+2. **房貸問題**
+
+    設計一個程式，能夠輸入貸款金額、貸款年限、年利率，程式能夠自動計算出借款人每個月需要還款的金額、總共還款金額。
+    
+    **提示：銀行常使用年利率，但是計算時必須以月利率才計算。**
+    
+    貸款問題計算公式如下：
+    
+    $$每個月還款金額=\dfrac{貸款金額×月利率}{1-\dfrac{1}{(1+月利率)^{貸款年限×12}}}$$
+    
+    Ans：[解答](https://)
+
+3. **正五角形面積計算**
+
+    輸入正五角形的邊長s，此程式會計算此五角形的面積，面積取到小數下兩位。
+    
+    面積計算公式如下：
+    
+    $$area=\dfrac{5×s^2}{4×tan(\dfrac{π}{5})}$$
+    
+    Ans：[解答]()
+
+4. **計算經緯度距離**
+
+    香港紅磡車站的經緯度是(25.0452929, 121.5168704)，台北車站的經緯度是(22.2838912, 114.173166)，請計算兩者之間的距離，距離計算到小數下兩位。
+    
+    經緯度求距離公式如下：
+    
+    $$distance=r×acos(sin(x_1)×sin(x_2)+cos(x_1)×cos(x_2)×cos(y_1-y_2))$$
+    
+    Ans:[解答]()
+    
+---
+
+
