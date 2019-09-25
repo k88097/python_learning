@@ -850,7 +850,7 @@ print(dir(str))     #列出str()中所有函式
 
     $$攝氏溫度 = (華氏溫度 - 32) × 5 ÷ 9$$
         
-    Ans：[解答](https://)
+    Ans：[解答](https://github.com/k88097/python_learning/blob/master/ch3/ch3_1.py)
 
 2. **房貸問題**
 
@@ -862,7 +862,7 @@ print(dir(str))     #列出str()中所有函式
     
     $$每個月還款金額=\dfrac{貸款金額×月利率}{1-\dfrac{1}{(1+月利率)^{貸款年限×12}}}$$
     
-    Ans：[解答](https://)
+    Ans：[解答](https://github.com/k88097/python_learning/blob/master/ch3/ch3_2.py)
 
 3. **正五角形面積計算**
 
@@ -872,7 +872,7 @@ print(dir(str))     #列出str()中所有函式
     
     $$area=\dfrac{5×s^2}{4×tan(\dfrac{π}{5})}$$
     
-    Ans：[解答]()
+    Ans：[解答](https://github.com/k88097/python_learning/blob/master/ch3/ch3_3.py)
 
 4. **計算經緯度距離**
 
@@ -882,7 +882,7 @@ print(dir(str))     #列出str()中所有函式
     
     $$distance=r×acos(sin(x_1)×sin(x_2)+cos(x_1)×cos(x_2)×cos(y_1-y_2))$$
     
-    Ans:[解答]()
+    Ans:[解答](https://github.com/k88097/python_learning/blob/master/ch3/ch3_4.py)
     
 ---
 
